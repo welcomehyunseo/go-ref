@@ -2,11 +2,10 @@ package package2
 
 import (
 	"errors"
-	"fmt"
 	"myerror/errs"
 )
 
-func MakeError() {
+func MakeError() error {
 	err := errs.NewMyCustomError(errors.New("my custom error"))
-	fmt.Println(err.Error())
+	return err
 }

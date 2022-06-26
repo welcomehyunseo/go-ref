@@ -5,17 +5,24 @@ import (
 )
 
 type MyCustomError struct {
-	err error
+	err   error
+	where string
 }
 
 func NewMyCustomError(err error) error {
+	where := getCallerFunctionName()
 	return &MyCustomError{
-		err: err,
+		err:   err,
+		where: where,
 	}
 }
 
 func (e *MyCustomError) Error() string {
-	name := getCurrentFunctionName()
-	msg := fmt.Sprintf("%s (Func: %s)", e.err.Error(), name)
+	msg := fmt.Sprintf("%s (Func: %s)", e.err.Error(), e.Where())
+
 	return msg
+}
+
+func (e *MyCustomError) Where() string {
+	return e.where
 }
