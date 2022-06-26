@@ -15,7 +15,7 @@ func NewMyCustomError(err error) error {
 }
 
 func (e *MyCustomError) Error() string {
-	name := getFuncName()
+	name := getCurrentFunctionName()
 	msg := fmt.Sprintf("%s (Func: %s)", e.err.Error(), name)
 	return msg
 }

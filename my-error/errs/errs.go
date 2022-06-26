@@ -2,12 +2,14 @@ package errs
 
 import "runtime"
 
-func getFuncName() string {
+func getCurrentFunctionName() string {
+	// Skip GetCurrentFunctionName
 	return getFrame(1).Function
 }
 
-func getFuncCallerName() string {
-	return getFrame(1).Function
+func getCallerFunctionName() string {
+	// Skip GetCallerFunctionName and the function to get the caller of
+	return getFrame(2).Function
 }
 
 func getFrame(skipFrames int) runtime.Frame {
