@@ -18,7 +18,7 @@ func NewMyCustomError(err error) error {
 }
 
 func (e *MyCustomError) Error() string {
-	msg := fmt.Sprintf("%s (Func: %s)", e.err.Error(), e.Where())
+	msg := fmt.Sprintf("%s (Where: %s)", e.err.Error(), e.Where())
 
 	return msg
 }
